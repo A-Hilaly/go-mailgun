@@ -23,6 +23,7 @@ func SendEmail(domain string, apiKey string, email *Email) (string, string, erro
 
 func SendMessage(mg mailgun.Mailgun, sender, subject, body string, recipient ...string) (string, string, error) {
 	message := mg.NewMessage(sender, subject, body, recipient...)
+	//message.SetReplyTo("")
 	resp, id, err := mg.Send(message)
 
 	if err != nil {
@@ -33,6 +34,5 @@ func SendMessage(mg mailgun.Mailgun, sender, subject, body string, recipient ...
 }
 
 func SendFromFile(apikey, domain, filePath string) error {
-
 	return nil
 }
